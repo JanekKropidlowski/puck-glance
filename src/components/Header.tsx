@@ -21,6 +21,10 @@ export function Header({ onSearch }: HeaderProps) {
     { label: "Aktualności", href: "/" },
     { label: "Kategorie", href: "/kategorie" },
     { label: "O nas", href: "/o-nas" },
+    { label: "Zgłoszenia", href: "/zgloszenia" },
+    { label: "Obietnice", href: "/obietnice" },
+    { label: "Sprawdź fakty", href: "/fakty" },
+    { label: "Rejestr wniosków", href: "/wnioski" },
   ];
 
   return (

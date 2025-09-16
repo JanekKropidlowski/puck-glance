@@ -8,6 +8,10 @@ import Categories from "./pages/Categories";
 import About from "./pages/About";
 import Article from "./pages/Article";
 import NotFound from "./pages/NotFound";
+import CitizenReportsPage from "./pages/CitizenReportsPage";
+import PromiseTrackerPage from "./pages/PromiseTrackerPage";
+import FactCheckPage from "./pages/FactCheckPage";
+import PublicRegistryPage from "./pages/PublicRegistryPage";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +26,10 @@ const App = () => (
           <Route path="/kategorie" element={<Categories />} />
           <Route path="/o-nas" element={<About />} />
           <Route path="/artykul/:slug" element={<Article />} />
+          <Route path="/zgloszenia" element={<CitizenReportsPage />} />
+          <Route path="/obietnice" element={<PromiseTrackerPage />} />
+          <Route path="/fakty" element={<FactCheckPage />} />
+          <Route path="/wnioski" element={<PublicRegistryPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
