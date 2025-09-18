@@ -12,6 +12,7 @@ import CitizenReportsPage from "./pages/CitizenReportsPage";
 import PromiseTrackerPage from "./pages/PromiseTrackerPage";
 import FactCheckPage from "./pages/FactCheckPage";
 import PublicRegistryPage from "./pages/PublicRegistryPage";
+import CMSPage from "./pages/CMSPage";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/obietnice" element={<PromiseTrackerPage />} />
           <Route path="/fakty" element={<FactCheckPage />} />
           <Route path="/wnioski" element={<PublicRegistryPage />} />
+          <Route path="/cms" element={<CMSPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

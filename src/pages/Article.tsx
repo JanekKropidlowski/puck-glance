@@ -5,13 +5,17 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { mockArticles } from "@/data/mockData";
+import { ArticleRenderer } from "@/components/ArticleRenderer";
+import { getStoredData } from "@/utils/localStorage";
 import { Clock, Download, ExternalLink } from "lucide-react";
 
 const Article = () => {
   const { slug } = useParams();
   
-  // Find article by slug
-  const article = mockArticles.find(a => a.slug === slug);
+  // Find article by slug from CMS articles first, then fallback to mock data
+  const cmsArticles = getStoredData('cms_articles', []);
+  const allArticles = [...cmsArticles, ...mockArticles];
+  const article = allArticles.find(a => a.slug === slug);
   
   if (!article) {
     return (

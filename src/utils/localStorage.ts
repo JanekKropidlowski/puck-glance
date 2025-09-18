@@ -1,4 +1,87 @@
-// localStorage utility functions
+export const getStoredData = <T>(key: string, defaultValue: T): T => {
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : defaultValue;
+  } catch (error) {
+    console.error(`Error reading from localStorage for key "${key}":`, error);
+    return defaultValue;
+  }
+};
+
+export const saveToStorage = <T>(key: string, data: T): void => {
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (error) {
+    console.error(`Error saving to localStorage for key "${key}":`, error);
+  }
+};
+
+export const removeFromStorage = (key: string): void => {
+  try {
+    localStorage.removeItem(key);
+  } catch (error) {
+    console.error(`Error removing from localStorage for key "${key}":`, error);
+  }
+};
+
+// Initialize default CMS users if they don't exist
+export const initializeDefaultUsers = () => {
+  const existingUsers = getStoredData('cms_users', []);
+  
+  if (existingUsers.length === 0) {
+    const defaultUsers = [
+      {
+        id: '1',
+        name: 'Administrator',
+        email: 'admin@gmina-puck.pl',
+        role: 'admin' as const,
+        bio: 'Administrator systemu',
+        position: 'Administrator CMS',
+        permissions: [
+          { id: '1', action: 'create_article', resource: 'articles' },
+          { id: '2', action: 'edit_article', resource: 'articles' },
+          { id: '3', action: 'delete_article', resource: 'articles' },
+          { id: '4', action: 'moderate_comments', resource: 'comments' },
+          { id: '5', action: 'manage_users', resource: 'users' },
+          { id: '6', action: 'manage_reports', resource: 'reports' },
+          { id: '7', action: 'manage_categories', resource: 'categories' },
+        ],
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: '2',
+        name: 'Redaktor',
+        email: 'redaktor@gmina-puck.pl',
+        role: 'editor' as const,
+        bio: 'Redaktor treści',
+        position: 'Redaktor',
+        permissions: [
+          { id: '1', action: 'create_article', resource: 'articles' },
+          { id: '2', action: 'edit_article', resource: 'articles' },
+          { id: '4', action: 'moderate_comments', resource: 'comments' },
+        ],
+        createdAt: new Date().toISOString(),
+      },
+      {
+        id: '3',
+        name: 'Moderator',
+        email: 'moderator@gmina-puck.pl',
+        role: 'moderator' as const,
+        bio: 'Moderator zgłoszeń',
+        position: 'Moderator',
+        permissions: [
+          { id: '4', action: 'moderate_comments', resource: 'comments' },
+          { id: '6', action: 'manage_reports', resource: 'reports' },
+        ],
+        createdAt: new Date().toISOString(),
+      },
+    ];
+    
+    saveToStorage('cms_users', defaultUsers);
+  }
+};
+
+// Legacy storage utility (keeping for compatibility with existing modules)
 export const storage = {
   get: <T>(key: string): T[] => {
     try {

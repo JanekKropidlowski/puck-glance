@@ -25,6 +25,7 @@ export function Header({ onSearch }: HeaderProps) {
     { label: "Obietnice", href: "/obietnice" },
     { label: "Sprawdź fakty", href: "/fakty" },
     { label: "Rejestr wniosków", href: "/wnioski" },
+    { label: "CMS", href: "/cms" },
   ];
 
   return (

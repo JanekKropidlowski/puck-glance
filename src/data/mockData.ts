@@ -1,5 +1,15 @@
 import { Article, Document } from "@/types";
 
+// Mock default user for backward compatibility
+const defaultUser = {
+  id: '0',
+  name: 'System',
+  email: 'system@gmina-puck.pl',
+  role: 'admin' as const,
+  permissions: [],
+  createdAt: new Date().toISOString(),
+};
+
 export const mockArticles: Article[] = [
   {
     id: "1",
@@ -10,7 +20,11 @@ export const mockArticles: Article[] = [
     publishedAt: "2025-01-15T10:00:00Z",
     readTime: 3,
     slug: "nowy-plac-zabaw-zeromskiego",
-    imageUrl: "/api/placeholder/400/250"
+    imageUrl: "/api/placeholder/400/250",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-15T10:00:00Z",
+    updatedAt: "2025-01-15T10:00:00Z",
   },
   {
     id: "2", 
@@ -20,7 +34,11 @@ export const mockArticles: Article[] = [
     category: "Konsultacje",
     publishedAt: "2025-01-14T14:30:00Z",
     readTime: 2,
-    slug: "konsultacje-sciezka-rowerowa"
+    slug: "konsultacje-sciezka-rowerowa",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-14T14:30:00Z",
+    updatedAt: "2025-01-14T14:30:00Z",
   },
   {
     id: "3",
@@ -30,7 +48,11 @@ export const mockArticles: Article[] = [
     category: "Transport",
     publishedAt: "2025-01-13T12:00:00Z",
     readTime: 4,
-    slug: "zmiany-rozklad-autobusy"
+    slug: "zmiany-rozklad-autobusy",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-13T12:00:00Z",
+    updatedAt: "2025-01-13T12:00:00Z",
   },
   {
     id: "4",
@@ -40,7 +62,11 @@ export const mockArticles: Article[] = [
     category: "Samorząd",
     publishedAt: "2025-01-12T16:45:00Z",
     readTime: 6,
-    slug: "sesja-rady-gminy-styczen"
+    slug: "sesja-rady-gminy-styczen",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-12T16:45:00Z",
+    updatedAt: "2025-01-12T16:45:00Z",
   },
   {
     id: "5",
@@ -50,7 +76,11 @@ export const mockArticles: Article[] = [
     category: "Zdrowie",
     publishedAt: "2025-01-11T09:15:00Z",
     readTime: 3,
-    slug: "badania-profilaktyczne-seniorzy"
+    slug: "badania-profilaktyczne-seniorzy",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-11T09:15:00Z",
+    updatedAt: "2025-01-11T09:15:00Z",
   },
   {
     id: "6",
@@ -60,7 +90,11 @@ export const mockArticles: Article[] = [
     category: "Kultura",
     publishedAt: "2025-01-10T11:20:00Z",
     readTime: 2,
-    slug: "konkurs-ogrody-2025"
+    slug: "konkurs-ogrody-2025",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-10T11:20:00Z",
+    updatedAt: "2025-01-10T11:20:00Z",
   },
   {
     id: "7",
@@ -70,7 +104,11 @@ export const mockArticles: Article[] = [
     category: "Inwestycje",
     publishedAt: "2025-01-09T13:30:00Z",
     readTime: 4,
-    slug: "modernizacja-oswietlenie-etap-2"
+    slug: "modernizacja-oswietlenie-etap-2",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-09T13:30:00Z",
+    updatedAt: "2025-01-09T13:30:00Z",
   },
   {
     id: "8",
@@ -80,7 +118,11 @@ export const mockArticles: Article[] = [
     category: "Urząd",
     publishedAt: "2025-01-08T08:00:00Z",
     readTime: 2,
-    slug: "nowe-godziny-pracy-urzedu"
+    slug: "nowe-godziny-pracy-urzedu",
+    author: defaultUser,
+    status: 'published',
+    createdAt: "2025-01-08T08:00:00Z",
+    updatedAt: "2025-01-08T08:00:00Z",
   }
 ];
 
